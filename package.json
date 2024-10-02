@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@studiometa/vue-mapbox-gl": "^2.5.0",
+    "redaxios": "^0.5.1",
     "vue": "^3.4.37"
   },
   "devDependencies": {
