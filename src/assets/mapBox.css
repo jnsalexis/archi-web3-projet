@@ -1,4 +1,8 @@
 .mapboxgl-ctrl.mapboxgl-ctrl-attrib,
 .mapboxgl-ctrl-bottom-left {
-    display: none !important;
+    display: none;
+}
+
+.mapboxgl-marker {
+    transform: translate(-50%, -100%);
 }
