@@ -42,10 +42,10 @@ const initMap = async () => {
 // Fonction pour ajouter des marqueurs à la carte
 const addMarkers = (markersData) => {
   markersData.forEach(markerData => {
-    const { longitude, latitude, operateur, adresse } = markerData;
+    const {longitude, latitude, operateur, adresse} = markerData;
 
     // Ajouter un tooltip au marqueur avec l'opérateur et l'adresse
-    const popup = new mapboxgl.Popup({ offset: 25 }).setText(`${operateur}, ${adresse}`);
+    const popup = new mapboxgl.Popup({offset: 25}).setText(`${operateur}, ${adresse}`);
 
     // Créer et ajouter le marqueur à la carte (marqueur basique de Mapbox)
     const marker = new mapboxgl.Marker()
@@ -65,6 +65,12 @@ const addMarkers = (markersData) => {
       });
     });
   });
+};
+
+// Générer le lien vers Google Maps pour l'itinéraire
+const getGoogleMapsLink = (latitude, longitude) => {
+  const currentLocation = 'current+location'; // Utilise la position actuelle de l'utilisateur dans Google Maps
+  return `https://www.google.com/maps/dir/?api=1&origin=${currentLocation}&destination=${latitude},${longitude}&travelmode=driving`;
 };
 
 onMounted(() => {
@@ -90,8 +96,16 @@ onMounted(() => {
       </li>
     </ul>
     <p v-else>
-      Cliquez sur un marqueur pour afficher les détails
+      Sélcetionnez un marqueur ✨
     </p>
+
+    <!-- Bouton pour afficher l'itinéraire dans Google Maps -->
+    <a v-if="selectedMarker"
+       :href="getGoogleMapsLink(selectedMarker.latitude, selectedMarker.longitude)"
+       target="_blank"
+       class="btn-itinerary">
+      Afficher l'itinéraire
+    </a>
   </div>
 </template>
 
@@ -112,7 +126,7 @@ onMounted(() => {
   left: 0;
   width: 100%;
   background-color: white;
-  height: 20vh;
+  height: 25vh;
   border-radius: 20px 20px 0 0;
   z-index: 10;
   display: flex;
@@ -143,7 +157,22 @@ onMounted(() => {
 }
 
 .card p {
-  color: white;
+  color: #333;
   text-align: center;
+}
+
+.btn-itinerary {
+  margin-top: 20px;
+  background-color: #0D744E;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  width: 70%;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.btn-itinerary:hover {
+  background-color: rgba(13, 116, 78, 0.88);
 }
 </style>
