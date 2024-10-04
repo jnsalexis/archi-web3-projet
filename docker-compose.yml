@@ -5,7 +5,7 @@ services:
     expose:
       - "80"
     volumes:
-      - ./dist:/usr/share/nginx/html  # Pointer vers le dossier compilé "dist"
+      - ./dist:/usr/share/nginx/html
     ports:
-      - 8080:80  # Rediriger le port 8080 vers le port 80 du conteneur
+      - 8080:80
     restart: always
