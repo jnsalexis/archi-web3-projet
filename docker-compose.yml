@@ -5,6 +5,7 @@ services:
     expose:
       - "80"
     volumes:
-      - ./code:/usr/share/nginx/html
+      - ./dist:/usr/share/nginx/html  # Pointer vers le dossier compilé "dist"
     ports:
-      - 8080:80  # Changer le port sur l'hôte (à gauche)
+      - 8080:80  # Rediriger le port 8080 vers le port 80 du conteneur
+    restart: always
