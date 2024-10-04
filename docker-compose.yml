@@ -7,4 +7,4 @@ services:
     volumes:
       - ./code:/usr/share/nginx/html
     ports:
-      - 80:80
+      - 8080:80  # Changer le port sur l'hôte (à gauche)
