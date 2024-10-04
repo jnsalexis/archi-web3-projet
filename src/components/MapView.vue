@@ -167,7 +167,7 @@ onMounted(() => {
   color: white;
   padding: 10px 15px;
   text-decoration: none;
-  width: 70%;
+  width: 25%;
   text-align: center;
   transition: background-color 0.3s;
 }
